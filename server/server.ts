@@ -297,12 +297,9 @@ app.get('/metadata', async (req, res) => {
     req.query?.token as string
   );
   let isCustomer = false;
-  let isSubscriber = false;
+  let isSubscriber = true;
   if (decoded?.email) {
     const customer = await getCustomerByEmail(decoded.email);
-    isSubscriber = Boolean(
-      customer?.subscriptions?.data?.find((sub) => sub?.status === 'active')
-    );
     isCustomer = Boolean(customer);
   }
   let isVMPoolFull = null;

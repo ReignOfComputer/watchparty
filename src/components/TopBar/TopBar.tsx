@@ -5,7 +5,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { LoginModal } from '../Modal/LoginModal';
 import axios from 'axios';
-import { SubscribeButton } from '../SubscribeButton/SubscribeButton';
 import { ProfileModal } from '../Modal/ProfileModal';
 
 export class NewRoomButton extends React.Component<{
@@ -121,7 +120,7 @@ export class SignInButton extends React.Component<SignInButtonProps> {
         )}
         <Popup
           basic
-          content="Sign in to set your name and picture, subscribe, or launch VBrowsers"
+          content="Sign in to set your name and picture"
           trigger={
             <Dropdown
               style={{ height: '36px' }}
@@ -261,13 +260,6 @@ export class TopBar extends React.Component<{
   roomTitleColor?: string;
 }> {
   render() {
-    const subscribeButton = (
-      <SubscribeButton
-        user={this.props.user}
-        isSubscriber={this.props.isSubscriber ?? false}
-        isCustomer={this.props.isCustomer ?? false}
-      />
-    );
     return (
       <React.Fragment>
         <div
@@ -356,7 +348,7 @@ export class TopBar extends React.Component<{
                       lineHeight: '30px',
                     }}
                   >
-                    Watch
+                    Cine
                   </div>
                   <div
                     style={{
@@ -368,38 +360,12 @@ export class TopBar extends React.Component<{
                       marginLeft: 'auto',
                     }}
                   >
-                    Party
+                    Ace
                   </div>
                 </div>
               </a>
             </React.Fragment>
           )}
-          <div
-            style={{
-              display: 'flex',
-              marginLeft: '10px',
-              alignItems: 'center',
-            }}
-          >
-            <a
-              href="https://discord.gg/3rYj5HV"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footerIcon"
-              title="Discord"
-            >
-              <Icon name="discord" size="big" link />
-            </a>
-            <a
-              href="https://github.com/howardchung/watchparty"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footerIcon"
-              title="GitHub"
-            >
-              <Icon name="github" size="big" link />
-            </a>
-          </div>
           <div
             className="mobileStack"
             style={{
@@ -414,7 +380,6 @@ export class TopBar extends React.Component<{
             {!this.props.hideMyRooms && this.props.user && (
               <ListRoomsButton user={this.props.user} />
             )}
-            {subscribeButton}
             {!this.props.hideSignin && <SignInButton user={this.props.user} />}
           </div>
         </div>
